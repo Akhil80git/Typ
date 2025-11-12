@@ -2,55 +2,51 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Perfect Mobile App</title>
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- ✅ PWA Required -->
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2563eb">
-
-  <script>
-    // ✅ Register Service Worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service Worker Registered'))
-        .catch(err => console.error('SW failed:', err));
-    }
-  </script>
+  <link rel="apple-touch-icon" href="icon-192.png">
 
   <style>
-    body {
+    :root {
+      --vh: 1vh;
+    }
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
+      height: calc(var(--vh, 1vh) * 100);
+      overflow: hidden;
       background: #f3f4f6;
     }
-
-    /* Scrollable Area */
     .content-area {
       height: calc(100vh - 130px);
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      padding-bottom: 2rem;
     }
+    .content-area::-webkit-scrollbar { display: none; }
 
-    /* Hide scrollbar */
-    .content-area::-webkit-scrollbar {
-      display: none;
+    /* Install Banner */
+    #installBanner {
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
     }
-
-    /* ✅ Full viewport height fix */
-    :root {
-      --vh: 1vh;
-    }
-    body {
-      height: calc(var(--vh, 1vh) * 100);
+    #installBanner.show {
+      transform: translateY(0);
     }
   </style>
 </head>
 <body class="bg-gray-100">
 
-  <!-- Top Navigation -->
+  <!-- Top Nav -->
   <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
     <div class="container mx-auto px-4">
       <div class="flex justify-between items-center py-3">
@@ -75,79 +71,102 @@
     <div class="container mx-auto px-4 py-4">
       <div class="bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-2xl p-6 mb-6 text-center">
         <h1 class="text-2xl font-bold mb-2">Perfect Mobile App</h1>
-        <p class="text-blue-100">Ab content smoothly scroll hoga!</p>
+        <p class="text-blue-100">अब फुलस्क्रीन में खुलेगा!</p>
       </div>
 
       <div class="space-y-4">
-        <!-- Multiple Sections -->
         <div class="bg-white rounded-xl p-6 shadow-sm">
           <h3 class="font-bold text-lg mb-3">Section 1</h3>
-          <p class="text-gray-600">Scrollable content section!</p>
+          <p class="text-gray-600">यह ऐप अब फुलस्क्रीन में है।</p>
         </div>
         <div class="bg-white rounded-xl p-6 shadow-sm">
           <h3 class="font-bold text-lg mb-3">Section 2</h3>
-          <p class="text-gray-600">Another smooth section.</p>
+          <p class="text-gray-600">कोई एड्रेस बार नहीं दिख रहा ना?</p>
         </div>
         <div class="bg-white rounded-xl p-6 shadow-sm">
           <h3 class="font-bold text-lg mb-3">Section 3</h3>
-          <p class="text-gray-600">Full screen test section.</p>
+          <p class="text-gray-600">Add to Home Screen करके देखें!</p>
         </div>
         <div class="bg-white rounded-xl p-6 shadow-sm">
           <h3 class="font-bold text-lg mb-3">Section 4</h3>
-          <p class="text-gray-600">Keep scrolling...</p>
+          <p class="text-gray-600">ऑफलाइन भी चलेगा!</p>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Bottom Navigation -->
+  <!-- Bottom Nav -->
   <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t z-50">
     <div class="container mx-auto px-4">
       <div class="flex justify-between items-center py-3">
-        <div class="flex flex-col items-center">
-          <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-            <i class="fas fa-comment text-gray-600 text-sm"></i>
-          </div>
-        </div>
-        <div class="flex flex-col items-center">
-          <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-            <i class="fas fa-heart text-gray-600 text-sm"></i>
-          </div>
-        </div>
-        <div class="flex flex-col items-center">
-          <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center -mt-6 shadow-lg">
-            <i class="fas fa-plus text-white"></i>
-          </div>
-        </div>
-        <div class="flex flex-col items-center">
-          <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-            <i class="fas fa-share text-gray-600 text-sm"></i>
-          </div>
-        </div>
-        <div class="flex flex-col items-center">
-          <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-            <i class="fas fa-cog text-gray-600 text-sm"></i>
-          </div>
-        </div>
+        <div class="flex flex-col items-center"><div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center"><i class="fas fa-comment text-gray-600 text-sm"></i></div></div>
+        <div class="flex flex-col items-center"><div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center"><i class="fas fa-heart text-gray-600 text-sm"></i></div></div>
+        <div class="flex flex-col items-center"><div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center -mt-6 shadow-lg"><i class="fas fa-plus text-white"></i></div></div>
+        <div class="flex flex-col items-center"><div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center"><i class="fas fa-share text-gray-600 text-sm"></i></div></div>
+        <div class="flex flex-col items-center"><div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center"><i class="fas fa-cog text-gray-600 text-sm"></i></div></div>
       </div>
     </div>
   </nav>
 
-  <!-- ✅ Auto Fullscreen Script -->
-  <script>
-    // Fix for 100vh issue
-    function setViewportHeight() {
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-    }
-    window.addEventListener('resize', setViewportHeight);
-    window.addEventListener('load', setViewportHeight);
+  <!-- Install Banner -->
+  <div id="installBanner" class="fixed bottom-20 left-4 right-4 bg-blue-600 text-white p-4 rounded-xl shadow-lg flex justify-between items-center z-50">
+    <p class="text-sm">Add to Home Screen</p>
+    <button id="installBtn" class="bg-white text-blue-600 px-3 py-1 rounded text-sm font-bold">Add</button>
+    <button id="closeBanner" class="ml-2 text-white">×</button>
+  </div>
 
-    // Auto scroll trick to hide address bar on load
+  <!-- Scripts -->
+  <script>
+    // 100vh Fix
+    function setVH() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    window.addEventListener('resize', setVH);
+    window.addEventListener('orientationchange', setVH);
+    setVH();
+
+    // Hide address bar
     window.addEventListener('load', () => {
       setTimeout(() => {
         window.scrollTo(0, 1);
-      }, 700); // slight delay ensures it triggers
+      }, 100);
     });
+
+    // PWA Install Prompt
+    let deferredPrompt;
+    const installBanner = document.getElementById('installBanner');
+    const installBtn = document.getElementById('installBtn');
+    const closeBanner = document.getElementById('closeBanner');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBanner.classList.add('show');
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        installBanner.classList.remove('show');
+      }
+      deferredPrompt = null;
+    });
+
+    closeBanner.addEventListener('click', () => {
+      installBanner.classList.remove('show');
+    });
+
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('SW registered:', reg))
+          .catch(err => console.log('SW failed:', err));
+      });
+    }
   </script>
 
 </body>
