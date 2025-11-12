@@ -1,183 +1,114 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Responsive Layout - Full Screen Mobile</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfect Mobile App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        /* Full height & hide overflow */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
+  <!-- ✅ PWA Required Links -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
 
-        /* Force full height */
-        .full-height {
-            min-height: 100vh;
-        }
+  <script>
+    // ✅ Register Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch(err => console.error('SW failed:', err));
+    }
+  </script>
 
-        /* Safe area for iPhone notch */
-        @media screen and (max-width: 768px) {
-            body {
-                padding-bottom: env(safe-area-inset-bottom, 20px);
-            }
-        }
-
-        /* Smooth transitions */
-        * {
-            transition: all 0.2s ease;
-        }
-    </style>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f3f4f6;
+    }
+    .content-area {
+      height: calc(100vh - 130px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .content-area::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 full-height">
+<body class="bg-gray-100">
 
-    <!-- Top Navigation - Mobile: Icons, Desktop: Names -->
-    <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-        <div class="container mx-auto px-4">
-            <!-- Mobile View - 4 Icons -->
-            <div class="flex justify-between items-center py-3 md:hidden">
-                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                    <i class="fas fa-home text-white"></i>
-                </div>
-                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                    <i class="fas fa-search text-white"></i>
-                </div>
-                <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
-                    <i class="fas fa-bell text-white"></i>
-                </div>
-                <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
-                    <i class="fas fa-user text-white"></i>
-                </div>
-            </div>
-
-            <!-- Desktop View - Names Only -->
-            <div class="hidden md:flex justify-center space-x-8 py-4">
-                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Home</span>
-                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Search</span>
-                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Notifications</span>
-                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Profile</span>
-            </div>
+  <!-- Top Navigation -->
+  <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+          <i class="fas fa-home text-white text-sm"></i>
         </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="pt-20 pb-24 md:pb-8 px-4 container mx-auto">
-        <!-- Hero Section -->
-        <div class="bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-2xl p-6 mb-6 text-center">
-            <h1 class="text-2xl md:text-4xl font-bold mb-2">Responsive Design</h1>
-            <p class="text-blue-100">Mobile: Icons | Desktop: Names</p>
+        <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+          <i class="fas fa-search text-white text-sm"></i>
         </div>
-
-        <!-- Content Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                <h3 class="font-bold text-lg mb-3">Feature One</h3>
-                <p class="text-gray-600">This is a feature description that works on all devices.</p>
-            </div>
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                <h3 class="font-bold text-lg mb-3">Feature Two</h3>
-                <p class="text-gray-600">Another amazing feature for your application.</p>
-            </div>
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                <h3 class="font-bold text-lg mb-3">Feature Three</h3>
-                <p class="text-gray-600">Third feature that completes the package.</p>
-            </div>
+        <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+          <i class="fas fa-bell text-white text-sm"></i>
         </div>
-
-        <!-- Additional Content -->
-        <div class="bg-white rounded-xl p-6 shadow-sm">
-            <h2 class="text-xl font-bold mb-4">Main Content Area</h2>
-            <p class="text-gray-600 mb-4">This content will scroll on mobile devices while top and bottom navigation remain fixed.</p>
-            <p class="text-gray-600">On desktop, the navigation shows text names instead of icons for better readability.</p>
-            <p class="text-gray-600 mt-4">Address bar chhup gaya? Tap karke dekho!</p>
+        <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+          <i class="fas fa-user text-white text-sm"></i>
         </div>
+      </div>
     </div>
+  </nav>
 
-    <!-- Bottom Navigation - Mobile: Icons, Desktop: Names -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t md:relative md:shadow-none md:border-t-0">
-        <div class="container mx-auto px-4">
-            <!-- Mobile View - 5 Icons -->
-            <div class="flex justify-between items-center py-3 md:hidden">
-                <div class="flex flex-col items-center">
-                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mb-1">
-                        <i class="fas fa-comment text-gray-600 text-sm"></i>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mb-1">
-                        <i class="fas fa-heart text-gray-600 text-sm"></i>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center -mt-4 shadow-lg">
-                        <i class="fas fa-plus text-white"></i>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mb-1">
-                        <i class="fas fa-share text-gray-600 text-sm"></i>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mb-1">
-                        <i class="fas fa-cog text-gray-600 text-sm"></i>
-                    </div>
-                </div>
-            </div>
+  <!-- Scrollable Content -->
+  <main class="content-area mt-16 mb-20">
+    <div class="container mx-auto px-4 py-4">
+      <div class="bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-2xl p-6 mb-6 text-center">
+        <h1 class="text-2xl font-bold mb-2">Perfect Mobile App</h1>
+        <p class="text-blue-100">Ab content smoothly scroll hoga!</p>
+      </div>
 
-            <!-- Desktop View - Names Only -->
-            <div class="hidden md:flex justify-center space-x-12 py-4">
-                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Messages</span>
-                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Favorites</span>
-                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Add New</span>
-                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Share</span>
-                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Settings</span>
-            </div>
+      <div class="space-y-4">
+        <!-- Multiple Sections -->
+        ${Array.from({length: 12}, (_, i) => `
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="font-bold text-lg mb-3">Section ${i + 1}</h3>
+            <p class="text-gray-600">Scrollable content section ${i + 1}!</p>
+          </div>`).join('')}
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <div class="flex flex-col items-center">
+          <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+            <i class="fas fa-comment text-gray-600 text-sm"></i>
+          </div>
         </div>
-    </nav>
-
-    <!-- JavaScript to Hide Address Bar on Mobile -->
-    <script>
-        // Hide address bar on page load
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                window.scrollTo(0, 1);
-            }, 0);
-        });
-
-        // Hide address bar on any click/tap
-        document.addEventListener('click', function() {
-            setTimeout(function() {
-                window.scrollTo(0, 1);
-            }, 0);
-        });
-
-        // Hide on scroll/touch
-        document.addEventListener('touchmove', function() {
-            setTimeout(function() {
-                window.scrollTo(0, 1);
-            }, 0);
-        });
-
-        // Optional: Re-hide if user pulls down
-        let lastTouchY = 0;
-        document.addEventListener('touchstart', function(e) {
-            lastTouchY = e.touches[0].clientY;
-        });
-
-        document.addEventListener('touchmove', function(e) {
-            const currentY = e.touches[0].clientY;
-            if (currentY > lastTouchY + 50) { // Pulling down
-                setTimeout(() => window.scrollTo(0, 1), 100);
-            }
-        });
-    </script>
+        <div class="flex flex-col items-center">
+          <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+            <i class="fas fa-heart text-gray-600 text-sm"></i>
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center -mt-6 shadow-lg">
+            <i class="fas fa-plus text-white"></i>
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+            <i class="fas fa-share text-gray-600 text-sm"></i>
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+            <i class="fas fa-cog text-gray-600 text-sm"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 
 </body>
 </html>
