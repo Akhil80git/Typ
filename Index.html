@@ -1,70 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Typ PWA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+  <title>Typ App</title>
 
-  <!-- Manifest -->
   <link rel="manifest" href="manifest.json">
-
-  <meta name="theme-color" content="#1976d2">
-
+  <link rel="icon" href="icon-192x192.png">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1976d2, #42a5f5);
-      color: white;
       text-align: center;
-      height: 100vh;
+      background: #f4f6f8;
+      color: #333;
       margin: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 0;
     }
-    h1 { font-size: 2em; }
-    p { font-size: 1.1em; }
-    button {
-      background: white;
-      color: #1976d2;
+
+    header {
+      background: #007bff;
+      color: #fff;
+      padding: 15px 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    main {
+      margin-top: 40px;
+    }
+
+    .btn {
+      background: #007bff;
+      color: white;
+      padding: 12px 25px;
       border: none;
-      padding: 10px 20px;
-      font-size: 18px;
-      border-radius: 10px;
+      border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
-      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: #0056b3;
     }
   </style>
 </head>
 <body>
-
-  <h1>🌐 Typ PWA Website</h1>
-  <p>Install karke app ki tarah use karo!</p>
-  <button id="installBtn" style="display:none;">📲 Install App</button>
+  <header>Welcome to Typ App</header>
+  <main>
+    <h2>Progressive Web App Demo</h2>
+    <p>Install this website as an app on your device!</p>
+    <button class="btn" id="installBtn" style="display:none;">Install App</button>
+  </main>
 
   <script>
     // ✅ Register Service Worker
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service Worker Registered'));
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker Registered:', reg.scope))
+        .catch(err => console.log('SW Registration Failed:', err));
+      });
     }
 
-    // ✅ Install Prompt Logic
+    // ✅ Handle PWA Install Prompt
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
 
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      installBtn.style.display = 'block';
+      installBtn.style.display = 'inline-block';
     });
 
     installBtn.addEventListener('click', async () => {
       installBtn.style.display = 'none';
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
-      console.log(`User response: ${outcome}`);
+      console.log('User choice:', outcome);
       deferredPrompt = null;
     });
   </script>
