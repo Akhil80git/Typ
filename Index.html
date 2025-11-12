@@ -55,33 +55,16 @@
     <button class="btn" id="installBtn" style="display:none;">Install App</button>
   </main>
 
-  <script>
+  <script type="text/javascript">
     // ✅ Register Service Worker
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js')
+    
+        navigator.serviceWorker.register('/service-worker.js')
         .then(reg => console.log('Service Worker Registered:', reg.scope))
         .catch(err => console.log('SW Registration Failed:', err));
       });
     }
 
-    // ✅ Handle PWA Install Prompt
-    let deferredPrompt;
-    const installBtn = document.getElementById('installBtn');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = 'inline-block';
-    });
-
-    installBtn.addEventListener('click', async () => {
-      installBtn.style.display = 'none';
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log('User choice:', outcome);
-      deferredPrompt = null;
-    });
   </script>
 </body>
 </html>
