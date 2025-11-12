@@ -1,23 +1,21 @@
 {
   "name": "Typ App",
   "short_name": "Typ",
-  "description": "A lightweight PWA demo to install Typ App on your device.",
-  "start_url": "/",
-  "scope": "/",
+  "description": "Typ is a simple and fast Progressive Web App.",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007bff",
   "orientation": "portrait",
-  "id": "https://fftyr.netlify.app/",
-  "categories": ["productivity", "utility", "demo"],
+  "id": "/",
   "icons": [
     {
-      "src": "icon-192x192.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/5968/5968672.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-512x512.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/5968/5968672.png",
       "sizes": "512x512",
       "type": "image/png"
     }
