@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Navigation App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Hide browser address bar on mobile */
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                window.scrollTo(0, 1);
+            }, 0);
+        });
+        
+        /* Prevent bounce effect on iOS */
+        body {
+            overscroll-behavior-y: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 relative h-screen overflow-hidden">
+    <!-- Top Navigation - Scroll ke saath upar jayega -->
+    <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 transition-transform duration-300" id="topNav">
+        <div class="container mx-auto px-4">
+            <!-- Mobile View - 4 Icons -->
+            <div class="flex justify-between items-center py-3 md:hidden">
+                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-home text-white text-sm"></i>
+                </div>
+                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-search text-white text-sm"></i>
+                </div>
+                <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-bell text-white text-sm"></i>
+                </div>
+                <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-white text-sm"></i>
+                </div>
+            </div>
+
+            <!-- Desktop View - Names Only -->
+            <div class="hidden md:flex justify-center space-x-8 py-4">
+                <span class="font-semibold text-gray-700">Home</span>
+                <span class="font-semibold text-gray-700">Search</span>
+                <span class="font-semibold text-gray-700">Notifications</span>
+                <span class="font-semibold text-gray-700">Profile</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Scrollable Content Area -->
+    <main class="h-full overflow-y-auto pt-16 pb-20" id="contentArea">
+        <div class="container mx-auto px-4">
+            <!-- Hero Section -->
+            <div class="bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-2xl p-6 mb-6 text-center">
+                <h1 class="text-2xl md:text-4xl font-bold mb-2">Fixed Navigation</h1>
+                <p class="text-blue-100">Top scrolls away, Bottom always fixed</p>
+            </div>
+
+            <!-- Multiple Content Sections for Scrolling -->
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-3">Section 1</h3>
+                    <p class="text-gray-600">Start scrolling down to see the effect...</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-3">Section 2</h3>
+                    <p class="text-gray-600">Content keeps scrolling...</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-3">Section 3</h3>
+                    <p class="text-gray-600">More content here...</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-3">Section 4</h3>
+                    <p class="text-gray-600">Keep scrolling...</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-3">Section 5</h3>
+                    <p class="text-gray-600">Almost there...</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-3">Section 6</h3>
+                    <p class="text-gray-600">Bottom navigation is always visible!</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-3">Section 7</h3>
+                    <p class="text-gray-600">Final content section.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation - HAMESHA FIXED, kabhi nahi hatenga -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t z-50">
+        <div class="container mx-auto px-4">
+            <!-- Mobile View - 5 Icons -->
+            <div class="flex justify-between items-center py-3 md:hidden">
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-comment text-gray-600 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-heart text-gray-600 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center -mt-6 shadow-lg">
+                        <i class="fas fa-plus text-white"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-share text-gray-600 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-cog text-gray-600 text-sm"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop View - Names Only -->
+            <div class="hidden md:flex justify-center space-x-12 py-4">
+                <span class="font-semibold text-gray-700">Messages</span>
+                <span class="font-semibold text-gray-700">Favorites</span>
+                <span class="font-semibold text-gray-700">Add New</span>
+                <span class="font-semibold text-gray-700">Share</span>
+                <span class="font-semibold text-gray-700">Settings</span>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Top navigation hide/show on scroll
+        let lastScrollTop = 0;
+        const topNav = document.getElementById('topNav');
+        const contentArea = document.getElementById('contentArea');
+
+        contentArea.addEventListener('scroll', function() {
+            let scrollTop = contentArea.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scroll down - hide top nav
+                topNav.style.transform = 'translateY(-100%)';
+            } else {
+                // Scroll up - show top nav
+                topNav.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Force fullscreen on mobile
+        function forceFullscreen() {
+            setTimeout(function() {
+                window.scrollTo(0, 1);
+            }, 100);
+        }
+
+        // Call on load and orientation change
+        window.addEventListener('load', forceFullscreen);
+        window.addEventListener('orientationchange', forceFullscreen);
+    </script>
+</body>
+      </html>
