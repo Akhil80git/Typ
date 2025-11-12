@@ -3,227 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fullscreen App</title>
+    <title>Responsive Layout</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Fullscreen styling with proper scrolling */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-        }
-        
-        /* Main container for proper layout */
-        .app-container {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Content area that scrolls */
-        .content-area {
-            flex: 1;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        /* Hide scrollbar but keep functionality */
-        .content-area {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        
-        .content-area::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
 </head>
 <body class="bg-gray-100">
-    <div class="app-container">
-        <!-- Top Navigation -->
-        <nav class="bg-white shadow-md z-50 flex-shrink-0">
-            <div class="container mx-auto px-4">
-                <!-- Mobile View - 4 Icons -->
-                <div class="flex justify-between items-center py-3 md:hidden">
-                    <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                        <i class="fas fa-home text-white text-sm"></i>
-                    </div>
-                    <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                        <i class="fas fa-search text-white text-sm"></i>
-                    </div>
-                    <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
-                        <i class="fas fa-bell text-white text-sm"></i>
-                    </div>
-                    <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
-                        <i class="fas fa-user text-white text-sm"></i>
-                    </div>
+    <!-- Top Navigation - Mobile: Icons, Desktop: Names -->
+    <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4">
+            <!-- Mobile View - 4 Icons -->
+            <div class="flex justify-between items-center py-3 md:hidden">
+                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-home text-white"></i>
                 </div>
-
-                <!-- Desktop View - Names Only -->
-                <div class="hidden md:flex justify-center space-x-8 py-4">
-                    <span class="font-semibold text-gray-700">Home</span>
-                    <span class="font-semibold text-gray-700">Search</span>
-                    <span class="font-semibold text-gray-700">Notifications</span>
-                    <span class="font-semibold text-gray-700">Profile</span>
+                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-search text-white"></i>
+                </div>
+                <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-bell text-white"></i>
+                </div>
+                <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-white"></i>
                 </div>
             </div>
-        </nav>
 
-        <!-- Scrollable Content Area -->
-        <main class="content-area">
-            <div class="container mx-auto px-4 py-4">
-                <!-- Hero Section -->
-                <div class="bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-2xl p-6 mb-6 text-center">
-                    <h1 class="text-2xl md:text-4xl font-bold mb-2">Fullscreen App</h1>
-                    <p class="text-blue-100">Content ab scroll hoga perfectly!</p>
-                </div>
-
-                <!-- Multiple Content Sections -->
-                <div class="space-y-4">
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 1</h3>
-                        <p class="text-gray-600">Ab content smoothly scroll hoga!</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 2</h3>
-                        <p class="text-gray-600">Content smoothly scrolling...</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 3</h3>
-                        <p class="text-gray-600">More content here...</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 4</h3>
-                        <p class="text-gray-600">Keep scrolling...</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 5</h3>
-                        <p class="text-gray-600">Smooth scrolling experience!</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 6</h3>
-                        <p class="text-gray-600">Perfect mobile experience!</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 7</h3>
-                        <p class="text-gray-600">Final content section.</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 8</h3>
-                        <p class="text-gray-600">Extra content to test scrolling.</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 9</h3>
-                        <p class="text-gray-600">More scrolling test...</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 10</h3>
-                        <p class="text-gray-600">Last section for testing.</p>
-                    </div>
-
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 11</h3>
-                        <p class="text-gray-600">Additional content...</p>
-                    </div>
-
-                    <div class="bg-white rounded-xl p-6 shadow-sm">
-                        <h3 class="font-bold text-lg mb-3">Section 12</h3>
-                        <p class="text-gray-600">Final testing section.</p>
-                    </div>
-                </div>
+            <!-- Desktop View - Names Only -->
+            <div class="hidden md:flex justify-center space-x-8 py-4">
+                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Home</span>
+                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Search</span>
+                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Notifications</span>
+                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Profile</span>
             </div>
-        </main>
+        </div>
+    </nav>
 
-        <!-- Bottom Navigation - Always Fixed -->
-        <nav class="bg-white shadow-lg border-t z-50 flex-shrink-0">
-            <div class="container mx-auto px-4">
-                <!-- Mobile View - 5 Icons -->
-                <div class="flex justify-between items-center py-3 md:hidden">
-                    <div class="flex flex-col items-center">
-                        <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-comment text-gray-600 text-sm"></i>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-heart text-gray-600 text-sm"></i>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center -mt-6 shadow-lg">
-                            <i class="fas fa-plus text-white"></i>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-share text-gray-600 text-sm"></i>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-cog text-gray-600 text-sm"></i>
-                        </div>
-                    </div>
-                </div>
+    <!-- Main Content -->
+    <div class="pt-20 pb-24 md:pb-8 px-4 container mx-auto">
+        <!-- Hero Section -->
+        <div class="bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-2xl p-6 mb-6 text-center">
+            <h1 class="text-2xl md:text-4xl font-bold mb-2">Responsive Design</h1>
+            <p class="text-blue-100">Mobile: Icons | Desktop: Names</p>
+        </div>
 
-                <!-- Desktop View - Names Only -->
-                <div class="hidden md:flex justify-center space-x-12 py-4">
-                    <span class="font-semibold text-gray-700">Messages</span>
-                    <span class="font-semibold text-gray-700">Favorites</span>
-                    <span class="font-semibold text-gray-700">Add New</span>
-                    <span class="font-semibold text-gray-700">Share</span>
-                    <span class="font-semibold text-gray-700">Settings</span>
-                </div>
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+                <h3 class="font-bold text-lg mb-3">Feature One</h3>
+                <p class="text-gray-600">This is a feature description that works on all devices.</p>
             </div>
-        </nav>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+                <h3 class="font-bold text-lg mb-3">Feature Two</h3>
+                <p class="text-gray-600">Another amazing feature for your application.</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+                <h3 class="font-bold text-lg mb-3">Feature Three</h3>
+                <p class="text-gray-600">Third feature that completes the package.</p>
+            </div>
+        </div>
+
+        <!-- Additional Content -->
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h2 class="text-xl font-bold mb-4">Main Content Area</h2>
+            <p class="text-gray-600 mb-4">This content will scroll on mobile devices while top and bottom navigation remain fixed.</p>
+            <p class="text-gray-600">On desktop, the navigation shows text names instead of icons for better readability.</p>
+        </div>
     </div>
 
-    <script>
-        // Hide address bar on mobile
-        function hideAddressBar() {
-            if (window.innerHeight < window.outerHeight) {
-                setTimeout(function() {
-                    window.scrollTo(0, 1);
-                }, 100);
-            }
-        }
+    <!-- Bottom Navigation - Mobile: Icons, Desktop: Names -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t md:relative md:shadow-none md:border-t-0">
+        <div class="container mx-auto px-4">
+            <!-- Mobile View - 5 Icons -->
+            <div class="flex justify-between items-center py-3 md:hidden">
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mb-1">
+                        <i class="fas fa-comment text-gray-600 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mb-1">
+                        <i class="fas fa-heart text-gray-600 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center -mt-4 shadow-lg">
+                        <i class="fas fa-plus text-white"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mb-1">
+                        <i class="fas fa-share text-gray-600 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mb-1">
+                        <i class="fas fa-cog text-gray-600 text-sm"></i>
+                    </div>
+                </div>
+            </div>
 
-        // Initial hide
-        hideAddressBar();
-
-        // Hide on resize and orientation change
-        window.addEventListener('resize', hideAddressBar);
-        window.addEventListener('orientationchange', hideAddressBar);
-
-        // Hide on touch start (user interaction)
-        document.addEventListener('touchstart', hideAddressBar);
-        
-        // Prevent zoom on double tap
-        document.addEventListener('touchstart', function(e) {
-            if (e.touches.length > 1) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(e) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                e.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
-    </script>
+            <!-- Desktop View - Names Only -->
+            <div class="hidden md:flex justify-center space-x-12 py-4">
+                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Messages</span>
+                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Favorites</span>
+                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Add New</span>
+                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Share</span>
+                <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Settings</span>
+            </div>
+        </div>
+    </nav>
 </body>
 </html>
