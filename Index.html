@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- ✅ PWA Required Links -->
+  <!-- ✅ PWA Required -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2563eb">
 
@@ -26,13 +26,25 @@
       padding: 0;
       background: #f3f4f6;
     }
+
+    /* Scrollable Area */
     .content-area {
       height: calc(100vh - 130px);
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
     }
+
+    /* Hide scrollbar */
     .content-area::-webkit-scrollbar {
       display: none;
+    }
+
+    /* ✅ Full viewport height fix */
+    :root {
+      --vh: 1vh;
+    }
+    body {
+      height: calc(var(--vh, 1vh) * 100);
     }
   </style>
 </head>
@@ -68,11 +80,22 @@
 
       <div class="space-y-4">
         <!-- Multiple Sections -->
-        ${Array.from({length: 12}, (_, i) => `
-          <div class="bg-white rounded-xl p-6 shadow-sm">
-            <h3 class="font-bold text-lg mb-3">Section ${i + 1}</h3>
-            <p class="text-gray-600">Scrollable content section ${i + 1}!</p>
-          </div>`).join('')}
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h3 class="font-bold text-lg mb-3">Section 1</h3>
+          <p class="text-gray-600">Scrollable content section!</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h3 class="font-bold text-lg mb-3">Section 2</h3>
+          <p class="text-gray-600">Another smooth section.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h3 class="font-bold text-lg mb-3">Section 3</h3>
+          <p class="text-gray-600">Full screen test section.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h3 class="font-bold text-lg mb-3">Section 4</h3>
+          <p class="text-gray-600">Keep scrolling...</p>
+        </div>
       </div>
     </div>
   </main>
@@ -109,6 +132,23 @@
       </div>
     </div>
   </nav>
+
+  <!-- ✅ Auto Fullscreen Script -->
+  <script>
+    // Fix for 100vh issue
+    function setViewportHeight() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    window.addEventListener('resize', setViewportHeight);
+    window.addEventListener('load', setViewportHeight);
+
+    // Auto scroll trick to hide address bar on load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        window.scrollTo(0, 1);
+      }, 700); // slight delay ensures it triggers
+    });
+  </script>
 
 </body>
 </html>
