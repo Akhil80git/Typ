@@ -1,10 +1,16 @@
 self.addEventListener('install', (event) => {
-  console.log('✅ Service Worker Installed');
   event.waitUntil(
     caches.open('typ-cache').then((cache) => {
-      return cache.addAll(['/Typ/', '/Typ/index.html']);
+      return cache.addAll([
+        '/',
+        '/index.html',
+        '/manifest.json',
+        '/icon-192x192.png',
+        '/icon-512x512.png'
+      ]);
     })
   );
+  console.log('Service Worker Installed');
 });
 
 self.addEventListener('fetch', (event) => {
