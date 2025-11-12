@@ -1,20 +1,23 @@
 {
   "name": "Perfect Mobile App",
-  "short_name": "MobileApp",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
+  "short_name": "PerfectApp",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#2563eb",
   "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
