@@ -2,45 +2,58 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Responsive Layout - Full Screen Mobile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Full Screen App - No Address Bar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Full height & hide overflow */
+        /* Full height & prevent bounce */
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            overscroll-behavior-y: contain;
             font-family: system-ui, -apple-system, sans-serif;
+            background: #f3f4f6;
         }
 
-        /* Force full height */
         .full-height {
             min-height: 100vh;
+            min-height: -webkit-fill-available;
         }
 
-        /* Safe area for iPhone notch */
+        /* iOS fix for 100vh */
+        @supports (-webkit-touch-callout: none) {
+            .full-height {
+                height: -webkit-fill-available;
+            }
+        }
+
+        /* Safe area for notch */
         @media screen and (max-width: 768px) {
             body {
                 padding-bottom: env(safe-area-inset-bottom, 20px);
             }
         }
 
-        /* Smooth transitions */
         * {
             transition: all 0.2s ease;
+        }
+
+        /* Disable pull-to-refresh bounce */
+        body {
+            overscroll-behavior-y: none;
         }
     </style>
 </head>
 <body class="bg-gray-100 full-height">
 
-    <!-- Top Navigation - Mobile: Icons, Desktop: Names -->
+    <!-- Top Navigation -->
     <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
         <div class="container mx-auto px-4">
-            <!-- Mobile View - 4 Icons -->
+            <!-- Mobile: Icons -->
             <div class="flex justify-between items-center py-3 md:hidden">
                 <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
                     <i class="fas fa-home text-white"></i>
@@ -56,7 +69,7 @@
                 </div>
             </div>
 
-            <!-- Desktop View - Names Only -->
+            <!-- Desktop: Text -->
             <div class="hidden md:flex justify-center space-x-8 py-4">
                 <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Home</span>
                 <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Search</span>
@@ -68,41 +81,47 @@
 
     <!-- Main Content -->
     <div class="pt-20 pb-24 md:pb-8 px-4 container mx-auto">
-        <!-- Hero Section -->
+        <!-- Hero -->
         <div class="bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-2xl p-6 mb-6 text-center">
-            <h1 class="text-2xl md:text-4xl font-bold mb-2">Responsive Design</h1>
-            <p class="text-blue-100">Mobile: Icons | Desktop: Names</p>
+            <h1 class="text-2xl md:text-4xl font-bold mb-2">Full Screen App</h1>
+            <p class="text-blue-100">Address bar gayab! Scroll karo, tap karo – nahi dikhega!</p>
         </div>
 
-        <!-- Content Grid -->
+        <!-- Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div class="bg-white rounded-xl p-6 shadow-sm">
                 <h3 class="font-bold text-lg mb-3">Feature One</h3>
-                <p class="text-gray-600">This is a feature description that works on all devices.</p>
+                <p class="text-gray-600">Yeh feature sab devices pe kaam karta hai.</p>
             </div>
             <div class="bg-white rounded-xl p-6 shadow-sm">
                 <h3 class="font-bold text-lg mb-3">Feature Two</h3>
-                <p class="text-gray-600">Another amazing feature for your application.</p>
+                <p class="text-gray-600">Ek aur shandaar feature aapke app ke liye.</p>
             </div>
             <div class="bg-white rounded-xl p-6 shadow-sm">
                 <h3 class="font-bold text-lg mb-3">Feature Three</h3>
-                <p class="text-gray-600">Third feature that completes the package.</p>
+                <p class="text-gray-600">Teesra feature jo package pura karta hai.</p>
             </div>
         </div>
 
-        <!-- Additional Content -->
-        <div class="bg-white rounded-xl p-6 shadow-sm">
-            <h2 class="text-xl font-bold mb-4">Main Content Area</h2>
-            <p class="text-gray-600 mb-4">This content will scroll on mobile devices while top and bottom navigation remain fixed.</p>
-            <p class="text-gray-600">On desktop, the navigation shows text names instead of icons for better readability.</p>
-            <p class="text-gray-600 mt-4">Address bar chhup gaya? Tap karke dekho!</p>
+        <!-- Long Content to Test Scroll -->
+        <div class="bg-white rounded-xl p-6 shadow-sm space-y-4">
+            <h2 class="text-xl font-bold mb-4">Scroll Test Area</h2>
+            <p class="text-gray-600">Yeh content scroll karega. Upar-neeche karo, address bar nahi dikhega!</p>
+            <div class="space-y-3">
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="text-gray-600">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p class="text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p class="text-gray-600">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="text-gray-600">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                <p class="text-gray-600">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.</p>
+            </div>
         </div>
     </div>
 
-    <!-- Bottom Navigation - Mobile: Icons, Desktop: Names -->
+    <!-- Bottom Navigation -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t md:relative md:shadow-none md:border-t-0">
         <div class="container mx-auto px-4">
-            <!-- Mobile View - 5 Icons -->
+            <!-- Mobile: Icons -->
             <div class="flex justify-between items-center py-3 md:hidden">
                 <div class="flex flex-col items-center">
                     <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mb-1">
@@ -131,7 +150,7 @@
                 </div>
             </div>
 
-            <!-- Desktop View - Names Only -->
+            <!-- Desktop: Text -->
             <div class="hidden md:flex justify-center space-x-12 py-4">
                 <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Messages</span>
                 <span class="font-semibold text-gray-700 hover:text-blue-600 cursor-pointer">Favorites</span>
@@ -142,41 +161,48 @@
         </div>
     </nav>
 
-    <!-- JavaScript to Hide Address Bar on Mobile -->
+    <!-- PERMANENT ADDRESS BAR HIDE SCRIPT -->
     <script>
-        // Hide address bar on page load
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                window.scrollTo(0, 1);
-            }, 0);
-        });
+        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-        // Hide address bar on any click/tap
-        document.addEventListener('click', function() {
-            setTimeout(function() {
-                window.scrollTo(0, 1);
-            }, 0);
-        });
+        if (isMobile) {
+            const hideAddressBar = () => {
+                setTimeout(() => window.scrollTo(0, 1), 0);
+            };
 
-        // Hide on scroll/touch
-        document.addEventListener('touchmove', function() {
-            setTimeout(function() {
-                window.scrollTo(0, 1);
-            }, 0);
-        });
+            // Hide on load
+            hideAddressBar();
 
-        // Optional: Re-hide if user pulls down
-        let lastTouchY = 0;
-        document.addEventListener('touchstart', function(e) {
-            lastTouchY = e.touches[0].clientY;
-        });
+            // Hide on every interaction
+            ['load', 'click', 'touchstart', 'touchmove', 'scroll', 'orientationchange'].forEach(event => {
+                window.addEventListener(event, hideAddressBar, { passive: true });
+                document.addEventListener(event, hideAddressBar, { passive: true });
+            });
 
-        document.addEventListener('touchmove', function(e) {
-            const currentY = e.touches[0].clientY;
-            if (currentY > lastTouchY + 50) { // Pulling down
-                setTimeout(() => window.scrollTo(0, 1), 100);
-            }
-        });
+            // Block pull-to-refresh
+            let lastTouchY = 0;
+            document.addEventListener('touchstart', (e) => {
+                lastTouchY = e.touches[0].clientY;
+            }, { passive: true });
+
+            document.addEventListener('touchmove', (e) => {
+                const currentY = e.touches[0].clientY;
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+                // If at top and pulling down → block
+                if (scrollTop <= 0 && currentY > lastTouchY + 10) {
+                    e.preventDefault();
+                }
+                hideAddressBar();
+            }, { passive: false });
+
+            // Disable overscroll
+            document.body.style.overscrollBehaviorY = 'none';
+            document.documentElement.style.overscrollBehaviorY = 'none';
+
+            // Fallback: Force hide every 300ms
+            setInterval(hideAddressBar, 300);
+        }
     </script>
 
 </body>
