@@ -1,10 +1,10 @@
 {
-  "name": "Typ PWA",
+  "name": "Typ App",
   "short_name": "Typ",
-  "start_url": "/Typ/index.html",
+  "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#1976d2",
-  "theme_color": "#1976d2",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff",
   "icons": [
     {
       "src": "icon-192x192.png",
